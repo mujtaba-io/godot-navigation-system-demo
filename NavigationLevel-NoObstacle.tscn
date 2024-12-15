@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdsxraapqigca"]
+
+[ext_resource type="PackedScene" uid="uid://cdauj16dv42cd" path="res://Agent.tscn" id="1_s6kd6"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_j8q0c"]
+vertices = PackedVector3Array(-7.5, 1, -7.5, -7.5, 1, 7.5, 7.5, 1, 7.5, 7.5, 1, -7.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3txux"]
+size = Vector3(16, 1, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srnjr"]
+albedo_color = Color(0.584314, 1, 0.572549, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qmne8"]
+data = PackedVector3Array(-8, 0.5, 8, 8, 0.5, 8, -8, -0.5, 8, 8, 0.5, 8, 8, -0.5, 8, -8, -0.5, 8, 8, 0.5, -8, -8, 0.5, -8, 8, -0.5, -8, -8, 0.5, -8, -8, -0.5, -8, 8, -0.5, -8, 8, 0.5, 8, 8, 0.5, -8, 8, -0.5, 8, 8, 0.5, -8, 8, -0.5, -8, 8, -0.5, 8, -8, 0.5, -8, -8, 0.5, 8, -8, -0.5, -8, -8, 0.5, 8, -8, -0.5, 8, -8, -0.5, -8, 8, 0.5, 8, -8, 0.5, 8, 8, 0.5, -8, -8, 0.5, 8, -8, 0.5, -8, 8, 0.5, -8, -8, -0.5, 8, 8, -0.5, 8, -8, -0.5, -8, 8, -0.5, 8, 8, -0.5, -8, -8, -0.5, -8)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D"]
+navigation_mesh = SubResource("NavigationMesh_j8q0c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3txux")
+surface_material_override/0 = SubResource("StandardMaterial3D_srnjr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qmne8")
+
+[node name="Agent" parent="." instance=ExtResource("1_s6kd6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.478554, 0.878058, 0, -0.878058, -0.478554, 0, 12.0841, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16.441, 0)

@@ -1,1 +1,2 @@
 # godot-navigation-system-demo
+Demo of [godot navigation system tutorial](https://gameidea.org/2024/12/13/using-godot-navigation-system-for-path-finding/). Here, I used Godot's built-in navigation region and navigation agent to accomplish simple path finding. It is part of a greater series of [RTS game tutorial](https://gameidea.org/2024/12/13/how-to-make-an-rts-game-in-godot/), but the this approach I presented here is not used by me. Instead, I used custom navigation system approach using a-star algorithm.
